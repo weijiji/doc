@@ -1,0 +1,12 @@
+从Github下载了一个maven项目，
+当执行更新Maven项目时，
+Java Comiler降低，后续Maven的下载也发生异常。
+修改完JAVA Compiler的，再更新Maven，JAVA Compiler自动变更为低版本。
+
+很明显这是跟pom.xml设定有关。
+打开pom.xml文件，修改java.version即可。
+<properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	<java.version>1.8</java.version>
+</properties>
