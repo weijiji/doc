@@ -1,0 +1,24 @@
+解决方法：
+
+1.找到最后一次提交到master分支的版本号，即【merge前的版本号】
+
+2.会退到某个版本号
+git reset --hard 【merge前的版本号】
+
+这个时候已经会退到了上一次提交的版本，但是之后的修改还是存在master分支上，以下步骤很关键
+
+3.重新创建一个分支,这时候的分支就是上一次提交的代码
+git checkout -b newmaster
+
+4.推到对应的远程newmaster
+git push
+
+5.这个时候相当于备份做好了，接下来就可以删除本地及远端的master分支
+git branch -d master
+git push --delete origin master
+
+6.从newmaster分支，重新在创建master分支，并推向远端
+git checkout -b master
+git push
+
+7.大功告成！

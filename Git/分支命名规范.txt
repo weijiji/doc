@@ -1,0 +1,57 @@
+
+1. git 分支命名规范
+git 分支分为集成分支、功能分支和修复分支，分别命名为 develop、feature 和 hotfix，均为单数。不可使用 features、future、hotfixes、hotfixs 等错误名称。
+
+(1) 集成（回归）分支
+集成分支分为两种：
+
+版本内的集成分支
+
+feature/versions/{$version}
+
+所有功能的集成分支
+
+develop
+
+(2) 功能分支
+功能分支分为两类：版本功能分支和非版本功能分支。
+
+顾名思义，版本功能分支是根据版本需求分出来的功能分支，这时候命名为 feature/{$version}/{$issue_id}_{$description} ；
+
+而非版本功能分支则是指不跟版本一起上线的功能或者一些不紧急的 bugs，这时候命名为 feature/{$username}/{$issue_id}_{$description} 。
+
+其中：
+
+feature 使用单数；
+
+变量 $version 代表版本号，格式为 vx_x_x（x为数字），比如 v6_5_0；
+
+变量 $issue_id 代表 JIRA 的 Issue ID，或者 TAPD#ID，比如PT-7、TAPD#1011729；
+
+变量 $username 代表开发者。username 统一使用各个 developer 的公司邮箱账号，比如 zhuangsq，liangzy；
+
+变量 $description 代表分支功能描述。应该尽量用简短的词组描述，不能使用中文，多个单词用下划线分割，比如 remove_thread。
+
+(3) 修复分支
+修复分支表示修复紧急线上 bug 的分支（不紧急的 bug 归为功能分支），分支命名为：hotfix/{$username}/{$issue_id}_{$description}。
+
+其中：
+
+hotfix 使用单数；
+
+变量 $username 代表开发者。username 统一使用各个 developer 的公司邮箱账号，比如 zhuangsq，liangzy；
+
+变量 $issue_id 代表 JIRA 的 Issue ID，或者 TAPD#ID；
+
+变量 $description 代表分支功能描述。应该尽量用简短的词组描述，不能使用中文，多个单词用下划线分割，比如 remove_thread。
+
+(4) git 分支结构
+git 分支目录结构
+ 
+
+2. git 提交记录规范
+每个 git commit 记录都需要按照固定格式，具体格式为：
+
+第一行：TAPD 或者 JIRA id，格式为：TAPD#{$id} 或者 {$issue_id}。
+
+第二行：提交描述。中英文皆可。

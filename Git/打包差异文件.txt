@@ -1,0 +1,10 @@
+获取指定支线(lazada_inventory_mail)最近一次提交的内容
+git archive -o ../updated.zip HEAD $(git diff --name-only lazada_inventory_mail^)
+
+获取两个提交（25ca5bd/adc8cc8）之间的差异内容
+git archive -o ../updated.zip HEAD $(git diff --name-only 25ca5bd adc8cc8)
+
+获取两个支线（master & lazada_inventory_mail）的差异内容
+git archive -o ../updated.zip HEAD $(git diff --name-only master lazada_inventory_mail)
+
+git diff -z --name-only --diff-filter=ACMRTUXB a9a85a9 6202271 | xargs -0 git archive -o patch_diff.zip HEAD
